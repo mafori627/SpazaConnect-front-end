@@ -1,0 +1,55 @@
+:root {
+  --green: #1e7a3b;
+  --green-dark: #145a2c;
+  --green-light: #e8f5ec;
+  --amber: #f0a020;
+  --paper: #f5f6f8;
+  --card: #ffffff;
+  --charcoal: #1f2937;
+  --charcoal-soft: #6b7280;
+  --border: #e5e7eb;
+  --danger: #c1440e;
+  --danger-bg: #fbe7de;
+
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body: 'Work Sans', system-ui, sans-serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--charcoal);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
