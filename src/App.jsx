@@ -8,6 +8,7 @@ import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
 import ProductCatalogue from './pages/ProductCatalogue'
 import Cart from './pages/Cart'
+import Pools from './pages/Pools'
 
 export default function App() {
   return (
@@ -45,7 +46,7 @@ export default function App() {
             path="/pools"
             element={
               <ProtectedRoute>
-                <ComingSoon title="Buying Pools" note="Full pools list screen is next." />
+                <Pools />
               </ProtectedRoute>
             }
           />

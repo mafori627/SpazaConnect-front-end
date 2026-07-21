@@ -1,0 +1,39 @@
+.pool-progress {
+  margin-bottom: 12px;
+}
+
+.pool-progress-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.pool-progress-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.pool-progress-label {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.72rem;
+  color: var(--charcoal-soft);
+}
+
+.pool-join-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pool-join-row .btn-primary {
+  flex: 1;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

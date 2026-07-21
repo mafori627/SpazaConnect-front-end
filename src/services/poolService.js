@@ -11,3 +11,11 @@ export function getPoolsNearby({ cluster, page = 0, size = 5, sortBy = 'id' }) {
 export function joinPool({ productId, quantity }) {
   return api.post('/pools/join', { productId, quantity })
 }
+
+// NOTE: DELETE /api/pools/orders/{orderId} is a stub on the backend right
+// now — it returns success but doesn't touch the DB or decrement
+// currentTotalQty. Wired up here so the UI is ready the moment that's
+// fixed, but calling it today won't actually remove you from a pool.
+export function leavePool(orderId) {
+  return api.delete(`/pools/orders/${orderId}`)
+}
