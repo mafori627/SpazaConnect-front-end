@@ -1,0 +1,32 @@
+.cart-savings-note {
+  background: var(--green-light);
+  color: var(--green-dark);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.cart-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 48px 8px 16px;
+  color: var(--green-dark);
+}
+
+.cart-success-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--charcoal);
+}
+
+.cart-success .btn-primary {
+  width: 100%;
+  margin-top: 8px;
+}

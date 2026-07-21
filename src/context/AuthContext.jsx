@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from 'react'
+import { setAuthCredentials, clearAuthCredentials } from '../services/api'
 
 const AuthContext = createContext(null)
 
@@ -10,14 +11,24 @@ export function AuthProvider({ children }) {
     return stored ? JSON.parse(stored) : null
   })
 
-  const login = useCallback((userData) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(userData))
-    setUser(userData)
+  const login = useCallback((userData, rawPassword) => {
+    // The backend's User entity has no @JsonIgnore on `password`, so every
+    // /auth/login and /auth/register response includes the BCrypt hash.
+    // Never let that reach localStorage or component state — strip it here,
+    // in the one place all session data flows through.
+    // eslint-disable-next-line no-unused-vars
+    const { password, ...safeUser } = userData
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(safeUser))
+    setUser(safeUser)
+
+    // See services/api.js — temporary Basic Auth stopgap, in memory only.
+    if (rawPassword) setAuthCredentials(safeUser.username, rawPassword)
   }, [])
 
   const logout = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY)
     setUser(null)
+    clearAuthCredentials()
   }, [])
 
   return (
