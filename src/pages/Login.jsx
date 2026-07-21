@@ -47,7 +47,7 @@ export default function Login() {
     setSubmitting(true)
     try {
       const res = await login(form)
-      setSession(res.data)
+      setSession(res.data, form.password)
       navigate(redirectTo, { replace: true })
     } catch (err) {
       setServerError(err.message)

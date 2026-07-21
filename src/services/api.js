@@ -24,4 +24,19 @@ api.interceptors.response.use(
   },
 )
 
+// TEMPORARY STOPGAP: the backend has no token endpoint, and everything
+// except /api/auth/** requires HTTP Basic auth. Until the team adds JWT
+// (or agrees on an alternative), we hold the password in memory only —
+// never localStorage — just long enough to attach it as a Basic Auth
+// header for the rest of the browser session. Lost on refresh/logout by
+// design; that's the cost of not having a real token yet.
+export function setAuthCredentials(username, password) {
+  const token = btoa(`${username}:${password}`)
+  api.defaults.headers.common['Authorization'] = `Basic ${token}`
+}
+
+export function clearAuthCredentials() {
+  delete api.defaults.headers.common['Authorization']
+}
+
 export default api
